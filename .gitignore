@@ -1,0 +1,30 @@
+# Node / Vite
+node_modules/
+frontend/dist/
+*.local
+
+# Python / Flask
+venv/
+.venv/
+backend/.SeleniumUIEvent/
+__pycache__/
+*.pyc
+*.db
+
+# IDE / OS
+.idea/
+.vscode/
+.playwright-cli/
+.codebuddy/
+.DS_Store
+Thumbs.db
+
+# 环境变量（如有）
+.env
+.env.*
+
+# 运行时生成物
+*.log
+dist/
+backend/runtime/
+backend/data/

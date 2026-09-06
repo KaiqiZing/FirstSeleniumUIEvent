@@ -1,0 +1,24 @@
+# 仓库内统一使用 LF，检出到 Windows 也不做 CRLF 转换
+* text=auto eol=lf
+
+# 二进制文件不参与文本转换与 diff
+*.png   binary
+*.jpg   binary
+*.jpeg  binary
+*.gif   binary
+*.webp  binary
+*.ico   binary
+*.pdf   binary
+*.db    binary
+*.woff  binary
+*.woff2 binary
+*.ttf   binary
+
+# GitHub 语言统计：锁定文件与文档不计入，避免项目被识别为 JavaScript
+frontend/package-lock.json linguist-generated=true
+*.md                       linguist-documentation=true
+docs/**                    linguist-documentation=true
+
+# 文档与前端资源在 diff 中的展示
+*.md   diff=markdown
+*.vue  diff=html
