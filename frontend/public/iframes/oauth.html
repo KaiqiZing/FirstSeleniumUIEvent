@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <title>统一授权登录</title>
+  <style>
+    body { font-family: "PingFang SC", "Microsoft YaHei", sans-serif; margin: 0; background: linear-gradient(160deg, #f0f5ff, #ffffff); min-height: 100vh; display: flex; align-items: center; justify-content: center; }
+    .card { width: 340px; background: #fff; border: 1px solid #e5e6eb; border-radius: 14px; padding: 26px 26px 22px; box-shadow: 0 12px 30px rgba(31, 35, 41, 0.1); }
+    .brand { width: 40px; height: 40px; border-radius: 10px; background: linear-gradient(135deg, #597ef7, #1d39c4); color: #fff; font-size: 18px; font-weight: 700; display: flex; align-items: center; justify-content: center; margin-bottom: 12px; }
+    h2 { margin: 0 0 6px; font-size: 17px; }
+    p { color: #86909c; font-size: 13px; line-height: 1.7; margin: 0 0 18px; }
+    .user { border: 1px solid #e5e6eb; background: #fafbfc; border-radius: 10px; padding: 10px 12px; font-size: 13px; margin-bottom: 16px; }
+    button { width: 100%; border: 0; border-radius: 8px; padding: 10px 0; font-size: 14px; cursor: pointer; }
+    .primary { background: #2f54eb; color: #fff; margin-bottom: 10px; }
+    .primary:hover { background: #1d39c4; }
+    .ghost { background: #fff; color: #4e5969; border: 1px solid #d9dde3; }
+    .hint { margin-top: 14px; font-size: 12px; color: #c9cdd4; text-align: center; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="brand">U</div>
+    <h2>统一授权登录</h2>
+    <p>应用正在请求你的基础资料与单据操作权限，用于完成后续操作。</p>
+    <div class="user">授权账号：<b>autotest@demo.cn</b></div>
+    <button type="button" class="primary" id="approveBtn">同意并授权</button>
+    <button type="button" class="ghost" id="denyBtn">拒绝授权</button>
+    <div class="hint">授权完成后此窗口会自动关闭</div>
+  </div>
+  <script>
+    function finish(result) {
+      if (window.opener) {
+        window.opener.postMessage({ type: 'OAUTH_RESULT', ok: result === 'ok' }, '*');
+      }
+      setTimeout(function () { window.close(); }, 200);
+    }
+    document.getElementById('approveBtn').addEventListener('click', function () { finish('ok'); });
+    document.getElementById('denyBtn').addEventListener('click', function () { finish('deny'); });
+  </script>
+</body>
+</html>

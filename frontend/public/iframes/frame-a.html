@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <title>一级框架 - 报销入口</title>
+  <style>
+    body { font-family: "PingFang SC", "Microsoft YaHei", sans-serif; margin: 0; background: #eef2ff; padding: 14px; }
+    .wrap { border: 1px solid #c9d4f5; border-radius: 10px; background: #fff; padding: 14px; }
+    .bar { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; }
+    .bar strong { color: #1f2329; font-size: 14px; }
+    .bar span { color: #86909c; font-size: 12px; }
+    .inner { margin-top: 10px; }
+    .btn-row { display: flex; gap: 10px; margin-top: 12px; }
+    .btn-row button {
+      border: 1px solid #597ef7; background: #fff; color: #2f54eb;
+      border-radius: 6px; padding: 7px 14px; font-size: 13px; cursor: pointer;
+    }
+    .state { font-size: 13px; color: #4e5969; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="bar">
+      <strong>一级框架：报销单入口</strong>
+      <span>frame-a（其中嵌套二级 iframe）</span>
+    </div>
+    <div class="inner">
+      <iframe id="innerFrame" src="./frame-b.html" style="width:100%; height:430px; border:1px dashed #adc6ff; border-radius:8px;" title="二级框架"></iframe>
+    </div>
+    <div class="btn-row">
+      <button type="button" id="markBtn">标记为加急</button>
+      <button type="button" id="closeBtn">关闭本入口</button>
+    </div>
+    <p class="state" id="frameState">入口状态：就绪，等待内层单据提交</p>
+  </div>
+  <script>
+    var frameState = document.getElementById('frameState');
+    document.getElementById('markBtn').addEventListener('click', function () {
+      frameState.textContent = '入口状态：已标记为加急';
+    });
+    document.getElementById('closeBtn').addEventListener('click', function () {
+      frameState.textContent = '入口状态：入口已关闭（重新加载页面可恢复）';
+    });
+    window.addEventListener('message', function (ev) {
+      var data = ev.data || {};
+      if (data.type === 'FRAME_B_SUBMIT') {
+        frameState.textContent = '入口状态：已收到内层提交，单号 ' + data.no + '，金额 ' + data.amount;
+        if (window.top !== window) {
+          window.top.postMessage({ type: 'FRAME_B_SUBMIT', no: data.no, amount: data.amount, reason: data.reason }, '*');
+        }
+      }
+    });
+  </script>
+</body>
+</html>
