@@ -1,0 +1,5 @@
+blank_issues_enabled: false
+contact_links:
+  - name: 贡献方式与编码约定
+    url: https://github.com/KaiqiZing/FirstSeleniumUIEvent/blob/main/CONTRIBUTING.md
+    about: 新增场景、代码规范、不可提交项等，请先阅读贡献指南

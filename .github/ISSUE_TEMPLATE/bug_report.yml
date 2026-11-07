@@ -1,0 +1,68 @@
+name: 场景问题反馈
+description: 某个场景无法复现、页面报错，或断言口径有歧义
+title: "[Scenario] "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        感谢反馈。请先确认问题能在最新代码上复现，并尽量填写完整信息，便于定位。
+        注意：请勿粘贴真实业务数据、内部系统地址或任何凭据。
+
+  - type: input
+    id: route
+    attributes:
+      label: 场景路由
+      description: 页面地址中的路由，例如 /i/17、/e/03
+      placeholder: /i/01
+    validations:
+      required: true
+
+  - type: textarea
+    id: environment
+    attributes:
+      label: 运行环境
+      description: 操作系统、浏览器与版本、WebDriver 版本、Node / Python 版本
+      placeholder: |
+        macOS 15 / Chrome 140 / chromedriver 140
+        Node 22.12.0 / Python 3.13.15
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps
+    attributes:
+      label: 复现步骤
+      placeholder: |
+        1. 打开 /i/01
+        2. 勾选同意后点击保存
+        3. ...
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: 预期结果与实际结果
+      placeholder: 预期「操作结果」区出现保存成功；实际无任何输出。
+    validations:
+      required: true
+
+  - type: textarea
+    id: evidence
+    attributes:
+      label: 日志与截图
+      description: 「操作结果」区域的文本、浏览器控制台报错、后端终端输出最有价值
+      render: shell
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: checklist
+    attributes:
+      label: 确认项
+      options:
+        - label: 已确认前后端都已启动，且问题在刷新页面后仍可复现
+          required: true
+        - label: 已搜索现有 Issue，没有重复反馈
+          required: true
