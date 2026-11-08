@@ -1,5 +1,11 @@
 # UI 自动化问题场景演练台（Vue 3 + Flask）
 
+[![CI](https://github.com/KaiqiZing/FirstSeleniumUIEvent/actions/workflows/ci.yml/badge.svg)](https://github.com/KaiqiZing/FirstSeleniumUIEvent/actions/workflows/ci.yml)
+[![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](./LICENSE)
+[![Vue 3](https://img.shields.io/badge/Vue-3.x-42b883.svg)](https://vuejs.org)
+[![Flask](https://img.shields.io/badge/Flask-3.0-000000.svg)](https://flask.palletsprojects.com)
+[![Release](https://img.shields.io/github/v/release/KaiqiZing/FirstSeleniumUIEvent.svg)](https://github.com/KaiqiZing/FirstSeleniumUIEvent/releases)
+
 **简体中文** | [English](./README.md)
 
 把 [selenium_common_problems.md](./selenium_common_problems.md) 中高频的 Selenium Web UI 自动化问题，还原成**行为有缺陷但外观正常的业务页面**。练习者用 Selenium 打开对应路由即可复现「不可交互 / 点击被拦截 / 旧元素引用 / iframe / Shadow DOM / 假下拉 / 弹窗 / 等待竞态 / 多窗口 / 验证码 / 字段加密 / 脱敏展示 / 密文存储 / 报文签名」等真实故障。

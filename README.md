@@ -1,5 +1,11 @@
 # Selenium UI Failure Playground (Vue 3 + Flask)
 
+[![CI](https://github.com/KaiqiZing/FirstSeleniumUIEvent/actions/workflows/ci.yml/badge.svg)](https://github.com/KaiqiZing/FirstSeleniumUIEvent/actions/workflows/ci.yml)
+[![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](./LICENSE)
+[![Vue 3](https://img.shields.io/badge/Vue-3.x-42b883.svg)](https://vuejs.org)
+[![Flask](https://img.shields.io/badge/Flask-3.0-000000.svg)](https://flask.palletsprojects.com)
+[![Release](https://img.shields.io/github/v/release/KaiqiZing/FirstSeleniumUIEvent.svg)](https://github.com/KaiqiZing/FirstSeleniumUIEvent/releases)
+
 [简体中文](./README.zh-CN.md) | **English**
 
 A hands-on practice range that turns the common Selenium Web UI automation failures listed in [selenium_common_problems.md](./selenium_common_problems.md) into **real-looking business pages that behave badly on purpose**. Point a WebDriver at the matching route and you can reproduce element-not-interactable, click interception, stale references, nested iframes, Shadow DOM, fake dropdowns, native dialogs, race conditions, multi-window flows, CAPTCHAs, field-level encryption, masked display, ciphertext storage and signed payloads.
